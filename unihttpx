@@ -4,6 +4,6 @@ COMMON_PORTS_WEB="80,443,81,300,591,593,832,981,1010,1311,1099,2082,2095,2096,24
 tmpfile_unimap=$(mktemp /tmp/abc-script.XXXXXX)
 
 
-sudo unimap --fast-scan -f /dev/stdin --ports $COMMON_PORTS_WEB -q -k --url-output | tee $tmpfile_unimap
+sudo unimap --fast-scan -f /dev/stdin --ports $COMMON_PORTS_WEB -q -k --url-output > $tmpfile_unimap
 cat $tmpfile_unimap | httpx -random-agent -status-code -silent -no-color | cut -d ' ' -f1
 
