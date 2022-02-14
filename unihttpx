@@ -5,5 +5,5 @@ tmpfile_unimap=$(mktemp /tmp/abc-script.XXXXXX)
 
 
 sudo unimap --fast-scan -f /dev/stdin --ports $COMMON_PORTS_WEB -q -k --url-output | tee $tmpfile_unimap
-cat unimap_commonweb.txt | httpx -random-agent -status-code -silent -no-color | cut -d ' ' -f1
+cat $tmpfile_unimap | httpx -random-agent -status-code -silent -no-color | cut -d ' ' -f1
 
